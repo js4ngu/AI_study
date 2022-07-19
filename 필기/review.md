@@ -101,25 +101,25 @@
       - 파라미터 $A,B$에 대해 리니어를 한 것이다
   - Non -Linera regression은 Nerual Net으로 구현가능하다
   - **Nerual Net**
-    - ![](2022-07-16-15-09-19.png)
+    - ![](./asset/2022-07-16-15-09-19.png)
     - 이러한 것들을 단순하게 표현해볼 것이다. 수식적으로는 ㅇㅇ
     - 역활에 연두를 해두자~
     - 입력 → 다음신경 세포
-    - ![](2022-07-16-15-12-12.png)
+    - ![](./asset/2022-07-16-15-12-12.png)
       - Weighted Sum이 여러개있으면 NN이다
   - **Linear regression by NN**
-    - ![](2022-07-16-15-14-39.png)
+    - ![](./asset/2022-07-16-15-14-39.png)
     - 위 그림을 잘보자 Linear regression은 결국 아래와 같은 Weight sum의 연속이다
     - $a \times x_{n}+1 \times b$
     - 이때 $\sum(y_i-(ax_i+b)^2$ 이 가장 작은 a,b를 찾는 것
     - 뭐 병렬하게 할 수 있지만,
-    - ![](2022-07-16-15-12-12.png)의 각 input에 FIFO로 값을 밀어넣을 수 도 있는 것이 아닌가?
+    - ![](./asset/2022-07-16-15-12-12.png)의 각 input에 FIFO로 값을 밀어넣을 수 도 있는 것이 아닌가?
     - 이를 설명한것이 아래의 그림이다.
-    - ![](2022-07-16-15-14-39.png)
+    - ![](./asset/2022-07-16-15-14-39.png)
     - 앞으로는 $a,b$ 만 나오는게 아니라 무진장 나오기에 $w_1,w_2,...$
     - 그리고 레이러를 표현할 수 있게 $w_{i}^{(j)}$
       - $j$는 레이어를 표현한 것이다
-    - ![](2022-07-16-15-25-55.png)
+    - ![](./asset/2022-07-16-15-25-55.png)
     - 이와 같은 다양한 Linear regression을 표현해 볼 것임
     - Case1. $y=ax^2+bx+c$
       - $$\begin{vmatrix}
@@ -187,12 +187,12 @@
   - Non-Linear regression 을 NN으로 하고싶다
     - Deep 하면 되지 않을까?
     - NN을 복수의 Layer로 하면 된다
-    - ![](2022-07-19-18-58-02.png)
-    - ![](2022-07-19-19-01-24.png)
+    - ![](./asset/2022-07-19-18-58-02.png)
+    - ![](./asset/2022-07-19-19-01-24.png)
     - 그냥 Linera regression이랑 똑같다!
     - 즉, Deep 하다고, Non-Linear regression이 되는 것이 아님!
   - **Activation function!**
-    -  ![](2022-07-16-15-12-12.png)
+    -  ![](./asset/2022-07-16-15-12-12.png)
        -  사실 요 동그라미에서 하는 일이 있다!
        -  Activation function!
           -  ($y=x$ : 그대로 값을 뱉는 Activation function) 이면 Linear regression
@@ -200,10 +200,10 @@
     - **대표적인 Activation function 4가지**
       - Linear regression
       - Percceptron
-        - ![](2022-07-19-19-07-34.png)
+        - ![](./asset/2022-07-19-19-07-34.png)
         - 이 함수를 Activation function으로 사용하면 Percceptron 이라 부름
       - Sigmoid
-        - ![](2022-07-19-19-09-44.png)
+        - ![](./asset/2022-07-19-19-09-44.png)
         - Logistic regression
       - Softmax regression
         - $$\frac{e^{x_i}}{\sum e^{x_i}}$$
