@@ -1,6 +1,6 @@
 # 혁펜하임 딥러닝 강의
 # Day1.
-- ****[딥러닝] 1-1강. 머신러닝 기초부터 탄탄히!! (선형 회귀)****
+- **[딥러닝] 1-1강. 머신러닝 기초부터 탄탄히!! (선형 회귀)**
     - **지도학습**
     - 강아지인걸 아는 사진을 많이 많이 보여줘서 기계를 학습 시키는것
     - **강화학습(비지도 학습)**
@@ -30,7 +30,7 @@
         - Gradient descent
         - Newton-Raphson
         - Least squares
-- ****[딥러닝] 1-2강. 이거 하나만 이해하면 일생이 편해집니다. (경사하강법 vs Newton method)****
+- **[딥러닝] 1-2강. 이거 하나만 이해하면 일생이 편해집니다. (경사하강법 vs Newton method)**
     - 즉 문제는 아래와 같음
     - $minimize \space (\underbar y - A \underbar x)^{T} (\underbar y - A \underbar x)$하는 $x (=\begin{vmatrix} \underbar a \\ \underbar b \end{vmatrix})$ 를 구하여라!
         
@@ -79,7 +79,7 @@
             - → 빡세서 잘 안씀ㅋㅋ
 
 # Day2.
-- ****[딥러닝] 1-3강. 이건 진짜 꼭 봐주세요...!! (그라디언트와 방향도함수)****
+- **[딥러닝] 1-3강. 이건 진짜 꼭 봐주세요...!! (그라디언트와 방향도함수)**
 - $minimize \space (\underbar y - A \underbar x)^{T} (\underbar y - A \underbar x)$
   - **directional derivative**
   - $$Gradient = \begin{vmatrix} \frac{\partial f}{\partial x1} \\ \frac{\partial f}{\partial c2}\end{vmatrix} $$
@@ -93,8 +93,8 @@
     - 이는 특정방향으로의 미분을 의미한다
   - 위의 3d 그래프를 $u$ 함수로 커팅을 한다.
   - $f(x1,x2) = f(\begin{vmatrix} x1 \\ x2\end{vmatrix})=f(x) = f(\begin{vmatrix}x+hu_1 \\ x2+hu_2\end{vmatrix})$
-
-- ****[딥러닝] 2-1강. ANN****
+  - 
+- **[딥러닝] 2-1강. ANN**
   - **Linear regression(review)**
     - 키와 몸무게를 입력받을떄 fit한 1차 함수를 찾는 과정
     - 근데 무엇이 선형하느냐?
@@ -182,3 +182,61 @@
       - 얘네는 안된다~
       - 수식전개로는 개지랄을 해도 안된다~
       - **Non-Linear regression**을 해야한다~
+# Day3
+- **[딥러닝] 2-2강. ANN의 필수요소! 활성화 함수 (Activation function)**
+  - Non-Linear regression 을 NN으로 하고싶다
+    - Deep 하면 되지 않을까?
+    - NN을 복수의 Layer로 하면 된다
+    - ![](2022-07-19-18-58-02.png)
+    - ![](2022-07-19-19-01-24.png)
+    - 그냥 Linera regression이랑 똑같다!
+    - 즉, Deep 하다고, Non-Linear regression이 되는 것이 아님!
+  - **Activation function!**
+    -  ![](2022-07-16-15-12-12.png)
+       -  사실 요 동그라미에서 하는 일이 있다!
+       -  Activation function!
+          -  ($y=x$ : 그대로 값을 뱉는 Activation function) 이면 Linear regression
+    - 즉, Activation function이 Non-Linear하고 Deep하면 Non-Linear regression이 가능하다
+    - **대표적인 Activation function 4가지**
+      - Linear regression
+      - Percceptron
+        - ![](2022-07-19-19-07-34.png)
+        - 이 함수를 Activation function으로 사용하면 Percceptron 이라 부름
+      - Sigmoid
+        - ![](2022-07-19-19-09-44.png)
+        - Logistic regression
+      - Softmax regression
+        - $$\frac{e^{x_i}}{\sum e^{x_i}}$$
+- **[딥러닝] 3-2강. 머신이 강아지를 학습하는 과정 (Logistic regression & Likelihood) | 이진 분류 문제**
+  - Logistic regression
+    - 확률적인 접근이 가능하다는게 핵심이다.
+    - $sigmoid func : g = \frac{e^x}{1+e^{x}}$ 
+    - Sigmoid 함수는 안그래도 비선형하는데 Loss함수의 ^2 까지 들어가면 그라디언트 조져도 고여버린다
+    - 이를 해결하기 위해 **Likelihood** 를 사용한다
+  - Likelihood
+    - A라는 주머니에 검은공 2개, 흰공 1개
+    - B라는 주머니에 검은공 1개, 흰공 1개
+    - $$
+      P(칠|A) = \frac{2}{3}, P(안칠|A) = \frac{1}{2} \\
+      P(칠|B) = \frac{1}{2}, P(안칠|A) = \frac{1}{2} \\
+      조건부 확률\\ (칠|A) + P(안칠|A) = 1\\P(칠|B) + P(안칠|B) = 1\\
+      Likelihood\\P(칠|A) + P(칠|B)\\P(안칠|A) + P(안칠|B)\\ $$
+    - 즉, Likelihood는 뒤에 있는 것에 대한 함수임
+  - **Dog classification**
+    - 이미지를 벡터라 생각해보자!
+    - 강아지 사진을 찢어서 벡터로 둔다고 생각하자
+    - NN에 Sigmoid 활성화 함수를 붙인 상황이라고 생각해보자
+    - $$
+      x_1 = 강아지 사진, Y_1 = 1\\
+      x_2 = 고양이 사진, Y_2 = -1\\
+      x_3 = 말 사진, Y_3 = -1\\
+      x_4 = 강아지 사진, Y_4 = -1 $$
+    - 이런식으로 사진을 마구 마구 보여주자 : 학습하는 거임
+    - 그러면 NN을 통과한 사진이 강아지 일 확률은 아래와 같음
+    - $$
+      P(Y_{i}|x_{i}) = sig(f(x_i,w)), Y_{i} = 1 : 강아지 사진일 확률\\
+      1-sig(f(x_i,w)), Y_{i} = -1 : 강아지 사진이 아닐 확률
+     $$
+    - $$Loss = -\log(\prod_{i=1}^N{p(Y_i|X_i)}): 이때 N은 보여주는 이미지 수$$
+    - $$ -\sum_{i}^N\log(P(Y_i|x_i)) $$
+  - **Animal Classificatoin**
